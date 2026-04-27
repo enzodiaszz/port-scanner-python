@@ -1,3 +1,5 @@
+##Esse arquivo roda um Port Scanner (Retorna as portas abertas dentro de um range) e um banner grabber (Retorna o banner de identificação das portas abertas) e gera um relatório com as principais informações das portas.
+
 import socket, json
 
 ip = input("Digite o IP:  ")
@@ -12,7 +14,11 @@ for porta in range(porta1, porta2 + 1):
     s.settimeout(1)
     try:
         s.connect((ip, porta))
-        portas_abertas.append(porta)
+        try:
+            banner = s.recv(1024).decode(errors="ignore")
+        except socket.timeout:
+            banner = "sem banner"
+        portas_abertas.append({"porta": porta, "banner": banner})
     except socket.timeout:
         bloqueadas.append(porta)
     except socket.error:

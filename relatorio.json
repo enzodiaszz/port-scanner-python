@@ -1,7 +1,12 @@
 {
     "ip": "127.0.0.1",
-    "range": "8070-8090",
-    "portas_abertas": [],
-    "total_bloqueadas": 21,
+    "range": "9990-10000",
+    "portas_abertas": [
+        {
+            "porta": 9999,
+            "banner": "FakeService 1.0 - Banner de teste\n"
+        }
+    ],
+    "total_bloqueadas": 10,
     "total_fechadas": 0
 }
